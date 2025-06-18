@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://enemies/Enemy.vs" type="Script" id=1]
+[ext_resource path="res://enemies/img/small_blue.png" type="Texture" id=2]
+[ext_resource path="res://enemies/img/small_blue_eyes.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 20.8389, 20.6743 )
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "Blink"
+length = 4.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Eyes/EyeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0 ]
+}
+
+[node name="BlueEnemy" type="Node2D" groups=[
+"blue",
+]]
+
+script = ExtResource( 1 )
+eye_divider = 33.0
+life = 1
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+offset = Vector2( 0, -22 )
+_sections_unfolded = [ "Offset", "Z Index" ]
+
+[node name="Area2D" type="Area2D" parent="." index="1" groups=[
+"enemy",
+]]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 2
+collision_mask = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+position = Vector2( 0.5, -21.5 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Eyes" type="Node2D" parent="." index="2"]
+
+position = Vector2( 0, -22 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="EyeSprite" type="Sprite" parent="Eyes" index="0"]
+
+texture = ExtResource( 3 )
+hframes = 2
+_sections_unfolded = [ "Animation", "Offset" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+
+root_node = NodePath("..")
+autoplay = "Blink"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Blink = SubResource( 2 )
+blend_times = [  ]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+
+

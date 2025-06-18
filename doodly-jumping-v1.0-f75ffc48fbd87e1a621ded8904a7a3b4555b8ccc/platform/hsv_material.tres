@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://platform/hsv.shader" type="Shader" id=1]
+
+[resource]
+
+render_priority = 0
+shader = ExtResource( 1 )
+shader_param/saturation = -0.537
+shader_param/value = 0.0
+shader_param/hue_scale = 10000.0
+shader_param/hue_offset = 0.0
+shader_param/cam_pos = null
+_sections_unfolded = [ "shader_param" ]
+
