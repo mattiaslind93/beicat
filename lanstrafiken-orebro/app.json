@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "Länstrafiken Örebro",
+    "slug": "lanstrafiken-orebro",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "lanstrafikenorebro",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "se.lanstrafiken.orebro",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Appen använder din position för att visa närliggande hållplatser och resor från din plats."
+      }
+    },
+    "android": {
+      "package": "se.lanstrafiken.orebro",
+      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"]
+    },
+    "plugins": [
+      "@maplibre/maplibre-react-native",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Appen använder din position för att visa närliggande hållplatser och resor från din plats."
+        }
+      ]
+    ]
+  }
+}
