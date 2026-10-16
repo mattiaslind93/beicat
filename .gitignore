@@ -7,3 +7,17 @@ export_presets.cfg
 # Mono-specific ignores
 .mono/
 .DS_store
+.env
+.env.*
+*.pem
+node_modules/
+venv/
+.venv/
+__pycache__/
+.DS_Store
+DerivedData/
+xcuserdata/
+*.db
+*.parquet
+*.pt
+*.ckpt
